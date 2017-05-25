@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TasbihView">
+
+        <attr name="speed" format="integer"></attr>
+        <attr name="enumm" format="boolean">
+
+        </attr>
+    </declare-styleable>
+</resources>
