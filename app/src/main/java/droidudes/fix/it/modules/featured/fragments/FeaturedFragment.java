@@ -24,8 +24,23 @@ public class FeaturedFragment extends BaseFragment {
     private List<String> imageUrls = new ArrayList<>();
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        imageUrls.add("http://thegiftplanner.com/blog/wp-content/uploads/2013/10/Special_Occasions-300x150.jpg");
+        imageUrls.add("http://www.meetrv.com/wp-content/uploads/2016/07/4-Things-You-Need-To-Know-When-You-Buy-Birthday-Gifts-300x150.jpg");
+        imageUrls.add("http://cdn-0.bestbirthdaygiftsideas.com/wp-content/uploads/bfi_thumb/5-Online-gift-shops-2wuxsohaqyu1fsfeb0kave.jpg");
+        imageUrls.add("https://s-media-cache-ak0.pinimg.com/originals/7a/1b/d1/7a1bd1766b1ce605fd9c3d17009eafcf.jpg");
+    }
+
+    @Override
     public int setResourceLayoutID() {
         return R.layout.fragment_featured;
+    }
+
+    @Override
+    public int setMenuID() {
+        return 0;
     }
 
     @Override
@@ -36,12 +51,12 @@ public class FeaturedFragment extends BaseFragment {
         initViews(view);
     }
 
-    private void initViews(View mView){
+    private void initViews(View mView) {
         mViewPager = (ViewPager) mView.findViewById(R.id.view_pager);
 
-        if(mAdapter == null)
-            mAdapter = new BannerAdapter(getChildFragmentManager(),imageUrls);
-        else
-            mViewPager.setAdapter(mAdapter);
+        if (mAdapter == null)
+            mAdapter = new BannerAdapter(mContext, imageUrls);
+
+        mViewPager.setAdapter(mAdapter);
     }
 }

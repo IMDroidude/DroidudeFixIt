@@ -42,4 +42,9 @@ public class SignUpFragment extends BaseFragment {
     public int setResourceLayoutID() {
         return R.layout.sign_up_fragment;
     }
+
+    @Override
+    public int setMenuID() {
+        return 0;
+    }
 }

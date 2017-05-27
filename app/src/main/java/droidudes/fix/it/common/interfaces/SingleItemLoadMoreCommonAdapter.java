@@ -62,5 +62,5 @@ public abstract class SingleItemLoadMoreCommonAdapter<T> extends RecyclerView.Ad
     }
 
     public abstract RecyclerView.ViewHolder setViewHolder(ViewGroup container);
-    public abstract void onBindData(RecyclerView.ViewHolder holder,T data);
+    public abstract void onBindData(RecyclerView.ViewHolder holder, T data);
 }

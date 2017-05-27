@@ -8,7 +8,8 @@ import droidudes.fix.it.common.Constants;
 public class AuthenticatePrefs {
 
     public static boolean isUserLoggedIn() {
-        return SharedPrefs.read(Constants.LOGGED_IN_KEY, false);
+        //// FIXME: 5/27/2017 remove true ye testing k liye kiya hai..
+        return SharedPrefs.read(Constants.LOGGED_IN_KEY, true);
     }
 
     public static void saveUserLoggedIn(boolean isUserLoggedIn) {

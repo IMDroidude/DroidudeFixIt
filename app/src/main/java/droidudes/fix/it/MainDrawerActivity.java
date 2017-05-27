@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import droidudes.fix.it.dashboard.OnModuleChangeListener;
 import droidudes.fix.it.dashboard.fragments.DashboardFragment;
 import droidudes.fix.it.parentbase.BaseActivity;
 import droidudes.fix.it.utilities.EnumUtils;
@@ -41,7 +42,14 @@ public class MainDrawerActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        addBaseFragment(new DashboardFragment());
+        DashboardFragment dashboardFragment = DashboardFragment.newInstance();
+        dashboardFragment.setOnModuleChangeListener(new OnModuleChangeListener() {
+            @Override
+            public void onModuleChanged(EnumUtils.Module moduleName) {
+
+            }
+        });
+        addBaseFragment(dashboardFragment);
         /*getSupportFragmentManager().beginTransaction().
                 replace(R.id.frame_container,new DashboardFragment()).commit();*/
     }
@@ -87,6 +95,7 @@ public class MainDrawerActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        //// FIXME: 5/27/2017 update name of menus as per app module like nav_featured
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {

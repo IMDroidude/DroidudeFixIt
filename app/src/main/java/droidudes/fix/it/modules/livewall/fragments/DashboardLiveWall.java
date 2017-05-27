@@ -49,6 +49,11 @@ public class DashboardLiveWall extends BaseFragment {
         return R.layout.livewall_fragment;
     }
 
+    @Override
+    public int setMenuID() {
+        return 0;
+    }
+
     private void getLiveWallList(){
         List<LiveWallPostBO> wallPostBOList = new ArrayList<>();
         wallPostBOList.add(new LiveWallPostBO());

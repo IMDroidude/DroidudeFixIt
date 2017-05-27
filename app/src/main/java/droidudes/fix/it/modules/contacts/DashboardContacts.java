@@ -74,4 +74,9 @@ public class DashboardContacts extends BaseFragment {
     public int setResourceLayoutID() {
         return R.layout.dashboard_fragment;
     }
+
+    @Override
+    public int setMenuID() {
+        return 0;
+    }
 }

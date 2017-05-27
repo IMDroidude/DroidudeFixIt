@@ -76,4 +76,9 @@ public class LogInFragment extends BaseFragment implements View.OnClickListener
     public int setResourceLayoutID() {
         return R.layout.activity_login;
     }
+
+    @Override
+    public int setMenuID() {
+        return 0;
+    }
 }

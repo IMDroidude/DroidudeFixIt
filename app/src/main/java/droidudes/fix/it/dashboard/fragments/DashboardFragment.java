@@ -31,6 +31,14 @@ public class DashboardFragment extends BaseFragment {
     private OnModuleChangeListener onModuleChangeListener;
     private MainDrawerActivity activityInstance;
 
+    public static DashboardFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        DashboardFragment fragment = new DashboardFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -50,7 +58,7 @@ public class DashboardFragment extends BaseFragment {
 
         updateTabPagerAndMenu(0 , moduleToShow);
 
-        mAdapter = new DashBoardAdapter(getFragmentManager(),moduleToShow);
+        mAdapter = new DashBoardAdapter(getFragmentManager(), moduleToShow);
         mViewPager.setOffscreenPageLimit(mAdapter.getCount());
 
         mViewPager.setAdapter(mAdapter);
@@ -141,5 +149,10 @@ public class DashboardFragment extends BaseFragment {
     @Override
     public int setResourceLayoutID() {
         return R.layout.dashboard_fragment;
+    }
+
+    @Override
+    public int setMenuID() {
+        return 0;
     }
 }

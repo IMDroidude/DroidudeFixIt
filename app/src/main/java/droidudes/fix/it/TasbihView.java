@@ -9,6 +9,7 @@ import android.view.View;
 /**
  * Created by Zare Ahmed on 5/25/2017.
  */
+//// FIXME: 5/27/2017 delete this file also....
 public class TasbihView extends View {
     private int speed;
     private Paint tasbehPaint;
