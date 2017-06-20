@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import droidudes.fix.it.dashboard.OnModuleChangeListener;
 import droidudes.fix.it.dashboard.fragments.DashboardFragment;
@@ -42,11 +43,15 @@ public class MainDrawerActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //if face any Problem see https://stackoverflow.com/a/33631797/3496570
+        TextView userNameTv = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_user_name);
+        userNameTv.setText("ZA  Ajiz");
+
         DashboardFragment dashboardFragment = DashboardFragment.newInstance();
         dashboardFragment.setOnModuleChangeListener(new OnModuleChangeListener() {
             @Override
             public void onModuleChanged(EnumUtils.Module moduleName) {
-
+                updateStatusBarColor(moduleName);
             }
         });
         addBaseFragment(dashboardFragment);
@@ -64,9 +69,10 @@ public class MainDrawerActivity extends BaseActivity
         }
     }
 
-    public void updateStatusBarColor(EnumUtils.Module moduleName){
+    public void updateStatusBarColor(EnumUtils.Module moduleName) {
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

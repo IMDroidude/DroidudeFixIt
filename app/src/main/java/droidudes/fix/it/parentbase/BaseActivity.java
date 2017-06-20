@@ -34,6 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void addAFragment(Fragment fragment){
         fragmentManager.beginTransaction().add(R.id.frame_container,fragment)
                 .addToBackStack(fragment.getClass().getSimpleName()).commit();
+        /// FIXME: 6/11/2017 use Transition with it
+        //fragmentManager.beginTransaction().setTransition(R.anim.)
     }
 
     public void addBaseFragment(Fragment fragment){

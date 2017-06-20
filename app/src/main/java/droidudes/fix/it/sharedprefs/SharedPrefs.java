@@ -3,14 +3,9 @@ package droidudes.fix.it.sharedprefs;
 /**
  * Created by Zare Ahmed on 11/8/2016.
  */
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.List;
 
 import droidudes.fix.it.MainApplication;
 
@@ -62,17 +57,6 @@ public class SharedPrefs {
         SharedPreferences.Editor edit = prefs.edit();
         edit.putString(valueKey, value);
         edit.commit();
-    }
-
-    public static <T> void saveAnyTypeOfList(String key, List<T> value) {
-        Gson gson = new GsonBuilder().create();
-        JsonArray jsonArray = gson.toJsonTree(value).getAsJsonArray();
-        SharedPrefs.save(key, jsonArray.toString());
-    }
-
-    public static <T> List<T> readAnyTypeOfList(String key, TypeToken<List<T>> tt) {
-        Gson gson = new Gson();
-        return (gson.fromJson(SharedPrefs.read(key, "[]"), tt.getType()));
     }
 }
 

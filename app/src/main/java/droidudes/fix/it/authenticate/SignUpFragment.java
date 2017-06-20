@@ -16,7 +16,8 @@ import droidudes.fix.it.parentbase.BaseFragment;
  */
 public class SignUpFragment extends BaseFragment {
 
-    private TextInputEditText emailTie,passwordTie,confirmPasswordTie;
+    private TextInputEditText emailTie,passwordTie,
+            confirmPasswordTie,userNameTie;
     private Button signUpBtn;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class SignUpFragment extends BaseFragment {
         emailTie = (TextInputEditText) view.findViewById(R.id.tie_email);
         passwordTie = (TextInputEditText) view.findViewById(R.id.tie_password);
         confirmPasswordTie = (TextInputEditText) view.findViewById(R.id.tie_confirm_password);
+        userNameTie = (TextInputEditText) view.findViewById(R.id.tie_username);
 
         signUpBtn = (Button) view.findViewById(R.id.btn_sign_up);
 

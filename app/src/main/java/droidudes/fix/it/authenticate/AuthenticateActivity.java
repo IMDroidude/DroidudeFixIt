@@ -19,6 +19,7 @@ public class AuthenticateActivity extends BaseActivity {
 
         addAFragment(new LogInFragment());
         ///Activities.replaceAFragment(AuthenticateActivity.this , new LogInFragment());
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new LogInFragment()).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,
+        // new LogInFragment()).commit();
     }
 }

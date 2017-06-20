@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class FeaturedFragment extends BaseFragment {
     private ViewPager mViewPager;
     private BannerAdapter mAdapter;
     private List<String> imageUrls = new ArrayList<>();
+
+    private RecyclerView topSalesRv;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +57,13 @@ public class FeaturedFragment extends BaseFragment {
 
     private void initViews(View mView) {
         mViewPager = (ViewPager) mView.findViewById(R.id.view_pager);
+
+        topSalesRv = (RecyclerView) mView.findViewById(R.id.rv_top_sales);
+        ///topSalesRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        topSalesRv.setHasFixedSize(true);
+        topSalesRv.setItemAnimator(new DefaultItemAnimator());
+
+
 
         if (mAdapter == null)
             mAdapter = new BannerAdapter(mContext, imageUrls);

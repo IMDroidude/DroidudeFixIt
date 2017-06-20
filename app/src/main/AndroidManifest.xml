@@ -22,6 +22,20 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".ui.DecisionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".authenticate.AuthenticateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

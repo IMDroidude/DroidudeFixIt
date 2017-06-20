@@ -32,13 +32,14 @@ public class DashboardFragment extends BaseFragment {
     private MainDrawerActivity activityInstance;
 
     public static DashboardFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         DashboardFragment fragment = new DashboardFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,10 +54,10 @@ public class DashboardFragment extends BaseFragment {
         final List<EnumUtils.Module> moduleToShow = getModuleToShowList();
         mViewPager.setOffscreenPageLimit(moduleToShow.size());
 
-        for(EnumUtils.Module module :moduleToShow)
+        for (EnumUtils.Module module : moduleToShow)
             mTabLayout.addTab(mTabLayout.newTab().setText(EnumUtils.Module.getTabText(module)));
 
-        updateTabPagerAndMenu(0 , moduleToShow);
+        updateTabPagerAndMenu(0, moduleToShow);
 
         mAdapter = new DashBoardAdapter(getFragmentManager(), moduleToShow);
         mViewPager.setOffscreenPageLimit(mAdapter.getCount());
@@ -70,6 +71,8 @@ public class DashboardFragment extends BaseFragment {
                     @Override
                     public void run() {
                         mViewPager.setCurrentItem(tab.getPosition());
+                        updateTabPagerAndMenu(tab.getPosition(),moduleToShow);
+                        ///onModuleChangeListener.onModuleChanged(moduleToShow.get(tab.getPosition()));
                     }
                 });
             }
@@ -91,7 +94,7 @@ public class DashboardFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                updateTabPagerAndMenu(position , moduleToShow);
+                updateTabPagerAndMenu(position, moduleToShow);
             }
 
             @Override
@@ -112,30 +115,30 @@ public class DashboardFragment extends BaseFragment {
     }
 
     //also validate other checks and this method should be in SharedPrefs...
-    public static List<EnumUtils.Module> getModuleToShowList(){
+    public static List<EnumUtils.Module> getModuleToShowList() {
         List<EnumUtils.Module> moduleToShow = new ArrayList<>();
 
         moduleToShow.add(EnumUtils.Module.FEATURED);
-        moduleToShow.add(EnumUtils.Module.LIVEWALL);
+        moduleToShow.add(EnumUtils.Module.LIVE_WALL);
 
         return moduleToShow;
     }
 
-    private Fragment getCurrentFragment(){
+    private Fragment getCurrentFragment() {
         return mAdapter.getCurrentFragment();
     }
 
-    private void updateTabPagerAndMenu(int position , List<EnumUtils.Module> moduleToShow){
+    private void updateTabPagerAndMenu(int position, List<EnumUtils.Module> moduleToShow) {
         //it helps to change menu on scroll
         //http://stackoverflow.com/a/27984263/3496570
         //No effect after changing below statement
         ActivityCompat.invalidateOptionsMenu(getActivity());
-        if(mTabLayout != null)
+        if (mTabLayout != null)
             mTabLayout.getTabAt(position).select();
 
-        if(onModuleChangeListener != null){
+        if (onModuleChangeListener != null) {
 
-            if(activityInstance != null){
+            if (activityInstance != null) {
                 activityInstance.updateStatusBarColor(moduleToShow.get(position));
             }
             onModuleChangeListener.onModuleChanged(moduleToShow.get(position));

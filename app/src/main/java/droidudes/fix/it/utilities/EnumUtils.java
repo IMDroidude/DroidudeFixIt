@@ -14,14 +14,14 @@ import droidudes.fix.it.modules.livewall.fragments.DashboardLiveWall;
  */
 public class EnumUtils {
 
-    public static enum Module{
-        FEATURED,LIVEWALL,CONTACT,OTHER;
+    public static enum Module {
+        FEATURED, LIVE_WALL, CONTACT, OTHER;
 
-        public static String getTabText(Module moduleName){
-            switch (moduleName){
+        public static String getTabText(Module moduleName) {
+            switch (moduleName) {
                 case FEATURED:
                     return "Featured";
-                case LIVEWALL:
+                case LIVE_WALL:
                     return "LiveWall";
                 case OTHER:
                     return "Other";
@@ -31,11 +31,11 @@ public class EnumUtils {
             return "";
         }
 
-        public static Fragment getDashboardFragment(Module moduleName){
-            switch (moduleName){
+        public static Fragment getDashboardFragment(Module moduleName) {
+            switch (moduleName) {
                 case FEATURED:
                     return new FeaturedFragment();
-                case LIVEWALL:
+                case LIVE_WALL:
                     return new DashboardLiveWall();
                 case OTHER:
                     return new DashboardContacts();
@@ -45,31 +45,31 @@ public class EnumUtils {
             return new FeaturedFragment();
         }
 
-        public static int getModuleColor(Context context ,Module moduleName){
-            int color = ContextCompat.getColor(context,getStatusBarColor(moduleName));
+        public static int getModuleColor(Context context, Module moduleName) {
+            int color = ContextCompat.getColor(context, getStatusBarColor(moduleName));
 
-            switch (moduleName){
+            switch (moduleName) {
                 case FEATURED:
-                    color = ContextCompat.getColor(context,getStatusBarColor(moduleName));
+                    color = ContextCompat.getColor(context, getStatusBarColor(moduleName));
                     break;
-                case LIVEWALL:
-                    color = ContextCompat.getColor(context,getStatusBarColor(moduleName));
+                case LIVE_WALL:
+                    color = ContextCompat.getColor(context, getStatusBarColor(moduleName));
                     break;
                 case CONTACT:
-                    color = ContextCompat.getColor(context,getStatusBarColor(moduleName));
+                    color = ContextCompat.getColor(context, getStatusBarColor(moduleName));
                     break;
                 case OTHER:
-                    color = ContextCompat.getColor(context,getStatusBarColor(moduleName));
+                    color = ContextCompat.getColor(context, getStatusBarColor(moduleName));
                     break;
             }
             return color;
         }
 
-        public static int getStatusBarColor(Module moduleName){
-            switch (moduleName){
+        public static int getStatusBarColor(Module moduleName) {
+            switch (moduleName) {
                 case FEATURED:
                     return R.color.blackish;
-                case LIVEWALL:
+                case LIVE_WALL:
                     return R.color.blackish;
                 case OTHER:
                     return R.color.blackish;

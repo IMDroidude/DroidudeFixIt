@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true"
     tools:context="droidudes.fix.it.MainDrawerActivity">
 
+    <!-- see https://stackoverflow.com/a/31837187/3496570  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,14 +23,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:layout_scrollFlags="scroll|enterAlways"
+
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:theme="@style/Theme.AppCompat.NoActionBar" />
+
+            <!-- app:theme and layout_scrollFlags newly Added -->
 
         </android.support.design.widget.AppBarLayout>
 
         <FrameLayout
             android:id="@+id/frame_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

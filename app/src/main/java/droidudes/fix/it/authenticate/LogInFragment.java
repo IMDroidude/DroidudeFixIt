@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import droidudes.fix.it.MainDrawerActivity;
 import droidudes.fix.it.R;
 import droidudes.fix.it.common.Constants;
 import droidudes.fix.it.parentbase.BaseFragment;
 import droidudes.fix.it.sharedprefs.SharedPrefs;
+import droidudes.fix.it.utilities.StringOP;
 
 /**
  * Created by Zare Ahmed on 10/29/2016.
@@ -62,11 +64,16 @@ public class LogInFragment extends BaseFragment implements View.OnClickListener
                 ///Activities.replaceAFragment(getActivity(),new ForgotPassFragment());
             break;
             case R.id.btn_login:
-                if(etEmail.getText().toString().trim().equals("email") && etPassword.getText().toString().equals("password"))
-                {
-                    SharedPrefs.save(Constants.LAST_EMAIL_KEY , etEmail.getText().toString());
-                    startActivity(new Intent(getActivity() , MainDrawerActivity.class));
-                    getActivity().finish();
+                if(StringOP.isValidEmail(etEmail.getText().toString())){
+                    if(etEmail.getText().toString().trim().equals("email") && etPassword.getText().toString().equals("password"))
+                    {
+                        SharedPrefs.save(Constants.LAST_EMAIL_KEY , etEmail.getText().toString());
+                        startActivity(new Intent(getActivity() , MainDrawerActivity.class));
+                        getActivity().finish();
+                    }
+                }
+                else {
+                    Toast.makeText(mContext,"Email not Valid",Toast.LENGTH_LONG).show();
                 }
             break;
         }

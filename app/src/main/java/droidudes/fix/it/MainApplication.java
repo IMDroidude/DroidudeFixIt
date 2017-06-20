@@ -9,6 +9,7 @@ import android.content.Context;
 public class MainApplication extends Application {
 
     public static Context applicationContext;
+    //also initialzie Admob ad here...
 
     @Override
     public void onCreate() {
